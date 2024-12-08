@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>上海爱斯利嘉半导体科技有限公司</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <header>
+    <h1>上海爱斯利嘉半导体科技有限公司</h1>
+    <nav class="navbar">
+      <a href="#" data-target="home">首页</a>
+      <a href="#" data-target="about">关于我们</a>
+      <a href="#" data-target="services">服务</a>
+      <a href="#" data-target="contact">联系我们</a>
+    </nav>
+    <div class="hamburger" onclick="toggleSidebar()">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </header>
+  <div class="content">
+    <section id="home" class="active">
+      <h2>欢迎来到上海爱斯利嘉半导体</h2>
+      <div class="company-intro">
+        <div class="intro-text">
+          <p class="headline">我们是一家专注于半导体技术研发与创新的高科技企业</p>
+          <p>作为半导体行业的领军企业，我们致力于：</p>
+          <ul class="features-list">
+            <li>提供先进的半导体解决方案和技术支持</li>
+            <li>专注于集成电路设计与制造工艺优化</li>
+            <li>推动半导体技术的本土化发展</li>
+            <li>为客户提供全方位的技术咨询服务</li>
+          </ul>
+          <p class="commitment">凭借深厚的技术积累和创新能力，我们持续为中国半导体产业的发展贡献力量。</p>
+        </div>
+        <div class="intro-stats">
+          <div class="stat-item">
+            <span class="stat-number">10+</span>
+            <span class="stat-label">年行业经验</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">100+</span>
+            <span class="stat-label">技术专利</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">500+</span>
+            <span class="stat-label">合作伙伴</span>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="about">
+      <h2>关于我们</h2>
+      <div class="about-content">
+        <p>我们的使命是通过创新的技术和服务，帮助客户实现他们的业务目标。</p>
+        <p>我们的团队由一群经验丰富的专业人士组成，他们拥有深厚的专业知识和业经验。</p>
+        
+        <!-- 新增的公司介绍内容 -->
+        <div class="company-history">
+          <h3>发展历程</h3>
+          <p>自2014年成立以来，上海爱斯利嘉半导体始终致力于推动中国半导体产业的技术创新与发展。我们在集成电路设计、晶圆制造工艺优化等领域取得了显著成就。</p>
+        </div>
+
+        <div class="core-values">
+          <h3>核心价值观</h3>
+          <ul>
+            <li><strong>创新驱动</strong> - 持续投入研发，推动技术突破</li>
+            <li><strong>品质至上</strong> - 严格的质量管控体系</li>
+            <li><strong>客户为本</strong> - 为客户创造最大价值</li>
+            <li><strong>合作共赢</strong> - 与合作伙伴共同发展</li>
+          </ul>
+        </div>
+
+        <div class="achievements">
+          <h3>主要成就</h3>
+          <ul>
+            <li>获得国家高新技术企业认证</li>
+            <li>拥有多项发明专利和实用新型专利</li>
+            <li>建立完善的研发中心和实验室</li>
+            <li>与多所高校建立产学研合作关系</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <section id="services">
+      <h2>我们的服务</h2>
+      <div class="services-grid">
+        <div class="service-item">
+          <div class="service-icon">
+            <img src="images/tech-support.svg" alt="技术支持图标">
+          </div>
+          <h3>技术支持</h3>
+          <p>提供全面的半导体技术支持服务：</p>
+          <ul>
+            <li>工艺优化与改进方案</li>
+            <li>技术难题诊断与解决</li>
+            <li>性能测试与分析</li>
+            <li>质量控制体系建设</li>
+          </ul>
+        </div>
+
+        <div class="service-item">
+          <div class="service-icon">
+            <img src="images/software-dev.svg" alt="软件开发图标">
+          </div>
+          <h3>软件开发</h3>
+          <p>专业的半导体相关软件开发服务：</p>
+          <ul>
+            <li>芯片设计自动化工具</li>
+            <li>制程控制软件开发</li>
+            <li>测试系统集成方案</li>
+            <li>数据分析平台开发</li>
+          </ul>
+        </div>
+
+        <div class="service-item">
+          <div class="service-icon">
+            <img src="images/consulting.svg" alt="咨询顾问图标">
+          </div>
+          <h3>咨询顾问</h3>
+          <p>专业的半导体产业咨询服务：</p>
+          <ul>
+            <li>工艺路线规划建议</li>
+            <li>产能优化方案设计</li>
+            <li>技术发展趋势分析</li>
+            <li>投资可行性研究</li>
+          </ul>
+        </div>
+
+        <div class="service-item">
+          <div class="service-icon">
+            <img src="images/training.svg" alt="培训支持图标">
+          </div>
+          <h3>培训和支持</h3>
+          <p>全方位的技术培训与支持：</p>
+          <ul>
+            <li>工艺技术培训课程</li>
+            <li>设备操作技能培训</li>
+            <li>质量管理体系培训</li>
+            <li>现场技术指导服务</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <section id="contact">
+      <h2>联系我们</h2>
+      <div class="contact-info">
+        <div class="contact-details">
+          <h3>直接联系方式</h3>
+          <p><strong>联系电话：</strong>021-XXXX-XXXX</p>
+          <p><strong>联系人：</strong>陶经理</p>
+          <p><strong>工作时间：</strong>周一至周五 9:00-18:00</p>
+          <p><strong>公司地址：</strong>上海市浦东新区XX路XX号</p>
+        </div>
+      </div>
+      <form>
+        <label for="name">姓名:</label>
+        <input type="text" id="name" name="name" required>
+        <label for="email">电子邮件:</label>
+        <input type="email" id="email" name="email" required>
+        <label for="message">消息:</label>
+        <textarea id="message" name="message" rows="4" required></textarea>
+        <input type="submit" value="提交">
+      </form>
+    </section>
+  </div>
+  <footer>
+    <p>&copy; 2024 上海爱斯利嘉半导体科技有限公司. 版权所有.</p>
+  </footer>
+  <script src="script.js"></script>
+</body>
+
+</html>
