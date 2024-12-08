@@ -39,7 +39,10 @@ header h1 {
     justify-content: center;
     gap: 2rem;
     padding: 1rem;
-    margin-left: 0;
+    margin-left: 2rem;
+    background-color: #f8f9fa;
+    border-radius: 30px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     flex-grow: 1;
 }
 
@@ -49,6 +52,7 @@ header h1 {
     padding: 0.5rem 1rem;
     border-radius: 20px;
     transition: all 0.3s ease;
+    font-weight: 500;
 }
 
 .navbar a:hover {
