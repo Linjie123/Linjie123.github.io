@@ -40,9 +40,6 @@ header h1 {
     gap: 2rem;
     padding: 1rem;
     margin-left: 2rem;
-    background-color: #f8f9fa;
-    border-radius: 30px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     flex-grow: 1;
 }
 
