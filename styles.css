@@ -545,7 +545,8 @@ form input[type="submit"]:hover {
 }
 
 .company-logo {
-  height: 40px; /* 调整logo大小 */
+  height: 40px;
   width: auto;
   vertical-align: middle;
+  margin-right: 10px;
 }
