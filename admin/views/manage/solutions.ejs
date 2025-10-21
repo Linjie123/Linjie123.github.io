@@ -1,0 +1,87 @@
+<%- include('../layout', { 
+  title: '解决方案管理', 
+  currentPage: 'solutions',
+  pageTitle: '解决方案内容管理',
+  body: `
+  <form action="/manage/solutions" method="post">
+    <div id="solutions-container">
+      ${data.map((solution, index) => `
+      <div class="solution-item-form">
+        <h4>解决方案 ${index + 1}</h4>
+        <div class="form-group">
+          <label>标题</label>
+          <input type="text" name="title_${index}" value="${solution.title}" required>
+        </div>
+        <div class="form-group">
+          <label>描述</label>
+          <textarea name="description_${index}" rows="2">${solution.description}</textarea>
+        </div>
+        <div class="form-group">
+          <label>解决方案内容（每行一项）</label>
+          <textarea name="items_${index}" rows="4">${solution.items.join('\n')}</textarea>
+        </div>
+        <button type="button" class="btn-remove" onclick="removeSolutionItem(this)">删除解决方案</button>
+      </div>
+      `).join('')}
+    </div>
+    
+    <button type="button" class="btn-add" onclick="addSolutionItem()">添加解决方案</button>
+    
+    <div class="form-actions">
+      <button type="submit" class="btn-save">保存更改</button>
+      <a href="/dashboard" class="btn-cancel">取消</a>
+    </div>
+  </form>
+`,
+  script: `
+  <script>
+    // 添加解决方案项
+    function addSolutionItem() {
+      const container = document.getElementById('solutions-container');
+      const index = container.children.length;
+      const newItem = document.createElement('div');
+      newItem.className = 'solution-item-form';
+      newItem.innerHTML = `
+        <h4>解决方案 ${index + 1}</h4>
+        <div class="form-group">
+          <label>标题</label>
+          <input type="text" name="title_${index}" required>
+        </div>
+        <div class="form-group">
+          <label>描述</label>
+          <textarea name="description_${index}" rows="2"></textarea>
+        </div>
+        <div class="form-group">
+          <label>解决方案内容（每行一项）</label>
+          <textarea name="items_${index}" rows="4"></textarea>
+        </div>
+        <button type="button" class="btn-remove" onclick="removeSolutionItem(this)">删除解决方案</button>
+      `;
+      container.appendChild(newItem);
+    }
+    
+    // 删除解决方案项
+    function removeSolutionItem(button) {
+      const item = button.closest('.solution-item-form');
+      item.remove();
+      updateSolutionIndices();
+    }
+    
+    // 更新解决方案索引
+    function updateSolutionIndices() {
+      const container = document.getElementById('solutions-container');
+      Array.from(container.children).forEach((item, index) => {
+        item.querySelector('h4').textContent = `解决方案 ${index + 1}`;
+        
+        const titleInput = item.querySelector('input[name^="title_"]');
+        const descInput = item.querySelector('textarea[name^="description_"]');
+        const itemsTextarea = item.querySelector('textarea[name^="items_"]');
+        
+        titleInput.name = `title_${index}`;
+        descInput.name = `description_${index}`;
+        itemsTextarea.name = `items_${index}`;
+      });
+    }
+  </script>
+`
+}) %>

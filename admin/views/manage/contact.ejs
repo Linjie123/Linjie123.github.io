@@ -1,0 +1,117 @@
+<%- include('../layout', { 
+  title: '联系我们管理', 
+  currentPage: 'contact',
+  pageTitle: '联系信息管理',
+  body: `
+  <form action="/manage/contact" method="post">
+    <div class="section">
+      <h3>联系信息</h3>
+      
+      <div id="contact-info-container">
+        ${data.contactInfo.map((info, index) => `
+        <div class="contact-info-item-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label>类型</label>
+              <select name="type_${index}">
+                <option value="phone" ${info.type === 'phone' ? 'selected' : ''}>电话</option>
+                <option value="email" ${info.type === 'email' ? 'selected' : ''}>邮箱</option>
+                <option value="address" ${info.type === 'address' ? 'selected' : ''}>地址</option>
+                <option value="time" ${info.type === 'time' ? 'selected' : ''}>工作时间</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>图标</label>
+              <input type="text" name="icon_${index}" value="${info.icon}" placeholder="例如: phone.svg">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>内容</label>
+            <textarea name="content_${index}" rows="1">${info.content}</textarea>
+          </div>
+          <button type="button" class="btn-remove" onclick="removeContactInfo(this)">删除</button>
+        </div>
+        `).join('')}
+      </div>
+      
+      <button type="button" class="btn-add" onclick="addContactInfo()">添加联系信息</button>
+    </div>
+    
+    <div class="section">
+      <h3>联系表单设置</h3>
+      <div class="form-group">
+        <label>表单标题</label>
+        <input type="text" name="formTitle" value="${data.formTitle}" required>
+      </div>
+      <div class="form-group">
+        <label>表单描述</label>
+        <textarea name="formDescription" rows="2">${data.formDescription}</textarea>
+      </div>
+      <div class="form-group">
+        <label>提交成功消息</label>
+        <textarea name="successMessage" rows="2">${data.successMessage}</textarea>
+      </div>
+    </div>
+    
+    <div class="form-actions">
+      <button type="submit" class="btn-save">保存更改</button>
+      <a href="/dashboard" class="btn-cancel">取消</a>
+    </div>
+  </form>
+`,
+  script: `
+  <script>
+    // 添加联系信息项
+    function addContactInfo() {
+      const container = document.getElementById('contact-info-container');
+      const index = container.children.length;
+      const newItem = document.createElement('div');
+      newItem.className = 'contact-info-item-form';
+      newItem.innerHTML = `
+        <div class="form-row">
+          <div class="form-group">
+            <label>类型</label>
+            <select name="type_${index}">
+              <option value="phone">电话</option>
+              <option value="email">邮箱</option>
+              <option value="address">地址</option>
+              <option value="time">工作时间</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>图标</label>
+            <input type="text" name="icon_${index}" placeholder="例如: phone.svg">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>内容</label>
+          <textarea name="content_${index}" rows="1"></textarea>
+        </div>
+        <button type="button" class="btn-remove" onclick="removeContactInfo(this)">删除</button>
+      `;
+      container.appendChild(newItem);
+    }
+    
+    // 删除联系信息项
+    function removeContactInfo(button) {
+      const item = button.closest('.contact-info-item-form');
+      item.remove();
+      updateContactInfoIndices();
+    }
+    
+    // 更新联系信息索引
+    function updateContactInfoIndices() {
+      const container = document.getElementById('contact-info-container');
+      Array.from(container.children).forEach((item, index) => {
+        const typeSelect = item.querySelector('select[name^="type_"]');
+        const iconInput = item.querySelector('input[name^="icon_"]');
+        const contentTextarea = item.querySelector('textarea[name^="content_"]');
+        
+        typeSelect.name = `type_${index}`;
+        iconInput.name = `icon_${index}`;
+        contentTextarea.name = `content_${index}`;
+      });
+    }
+  </script>
+`
+}) %>

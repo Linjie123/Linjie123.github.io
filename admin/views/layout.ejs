@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title || '后台管理系统' %> - 上海爱斯利嘉半导体</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="admin-container">
+    <% if (typeof username !== 'undefined') { %>
+    <header class="admin-header">
+      <div class="logo">上海爱斯利嘉半导体管理系统</div>
+      <div class="user-info">
+        <span>欢迎，<%= username %></span>
+        <a href="/logout" class="logout-btn">退出登录</a>
+      </div>
+    </header>
+    
+    <div class="admin-content">
+      <aside class="admin-sidebar">
+        <nav>
+          <ul>
+            <li><a href="/dashboard" class="<%= currentPage === 'dashboard' ? 'active' : '' %>">仪表盘</a></li>
+            <li><a href="/manage/home" class="<%= currentPage === 'home' ? 'active' : '' %>">首页管理</a></li>
+            <li><a href="/manage/about" class="<%= currentPage === 'about' ? 'active' : '' %>">关于我们管理</a></li>
+            <li><a href="/manage/services" class="<%= currentPage === 'services' ? 'active' : '' %>">服务管理</a></li>
+            <li><a href="/manage/solutions" class="<%= currentPage === 'solutions' ? 'active' : '' %>">解决方案管理</a></li>
+            <li><a href="/manage/contact" class="<%= currentPage === 'contact' ? 'active' : '' %>">联系我们管理</a></li>
+            <li><a href="/export" class="<%= currentPage === 'export' ? 'active' : '' %>">导出数据</a></li>
+          </ul>
+        </nav>
+      </aside>
+      
+      <main class="admin-main">
+        <div class="page-header">
+          <h1><%= pageTitle || '管理页面' %></h1>
+        </div>
+        <div class="page-content">
+          <% if (success) { %>
+          <div class="message success">保存成功！</div>
+          <% } %>
+          <% if (error) { %>
+          <div class="message error"><%= error %></div>
+          <% } %>
+          <%- body %>
+        </div>
+      </main>
+    </div>
+    <% } else { %>
+    <div class="login-container">
+      <%- body %>
+    </div>
+    <% } %>
+  </div>
+  
+  <script src="/js/main.js"></script>
+  <%- script %>
+</body>
+</html>

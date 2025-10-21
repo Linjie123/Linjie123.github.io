@@ -1,0 +1,27 @@
+{
+  "contactInfo": [
+    {
+      "type": "phone",
+      "icon": "phone.svg",
+      "content": "400-123-4567"
+    },
+    {
+      "type": "email",
+      "icon": "email.svg",
+      "content": "contact@example.com"
+    },
+    {
+      "type": "address",
+      "icon": "address.svg",
+      "content": "上海市浦东新区张江高科技园区博云路2号"
+    },
+    {
+      "type": "time",
+      "icon": "time.svg",
+      "content": "周一至周五 9:00-18:00"
+    }
+  ],
+  "formTitle": "联系我们",
+  "formDescription": "如果您有任何问题或需求，请填写下面的表单，我们的客服人员会尽快与您联系。",
+  "successMessage": "感谢您的留言！我们将尽快与您联系。"
+}

@@ -1,0 +1,207 @@
+<%- include('../layout', { 
+  title: '关于我们管理', 
+  currentPage: 'about',
+  pageTitle: '关于我们内容管理',
+  body: `
+  <form action="/manage/about" method="post">
+    <div class="form-section">
+      <h3>公司简介</h3>
+      <div class="form-group">
+        <textarea id="introduction" name="introduction" rows="5">${data.introduction}</textarea>
+      </div>
+    </div>
+    
+    <div class="form-section">
+      <h3>发展历程</h3>
+      <div id="timeline-container">
+        ${data.timeline.map((item, index) => `
+        <div class="timeline-item-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label>年份</label>
+              <input type="text" name="timeline[${index}][year]" value="${item.year}" required>
+            </div>
+            <div class="form-group">
+              <label>描述</label>
+              <input type="text" name="timeline[${index}][description]" value="${item.description}" required>
+            </div>
+            <button type="button" class="btn-remove" onclick="removeTimelineItem(this)">删除</button>
+          </div>
+        </div>
+        `).join('')}
+      </div>
+      <button type="button" class="btn-add" onclick="addTimelineItem()">添加年份</button>
+    </div>
+    
+    <div class="form-section">
+      <h3>专业团队</h3>
+      <div class="form-group">
+        <label>团队描述</label>
+        <textarea id="team_description" name="team[description]" rows="2">${data.team.description}</textarea>
+      </div>
+      <div class="form-group">
+        <label>团队特点（每行一项）</label>
+        <textarea id="team_points" name="team[points]" rows="5">${data.team.points.join('\n')}</textarea>
+      </div>
+      <div class="form-group">
+        <label>团队总结</label>
+        <textarea id="team_conclusion" name="team[conclusion]" rows="2">${data.team.conclusion}</textarea>
+      </div>
+    </div>
+    
+    <div class="form-section">
+      <h3>技术实力</h3>
+      <div class="form-group">
+        <label>技术实力描述</label>
+        <textarea id="tech_description" name="techCapabilities[description]" rows="2">${data.techCapabilities.description}</textarea>
+      </div>
+      <div class="form-group">
+        <label>技术实力要点（每行一项）</label>
+        <textarea id="tech_points" name="techCapabilities[points]" rows="5">${data.techCapabilities.points.join('\n')}</textarea>
+      </div>
+    </div>
+    
+    <div class="form-section">
+      <h3>核心价值观</h3>
+      <div id="values-container">
+        ${data.coreValues.map((item, index) => `
+        <div class="value-item-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label>标题</label>
+              <input type="text" name="coreValues[${index}][title]" value="${item.title}" required>
+            </div>
+            <div class="form-group">
+              <label>描述</label>
+              <input type="text" name="coreValues[${index}][description]" value="${item.description}" required>
+            </div>
+            <button type="button" class="btn-remove" onclick="removeValueItem(this)">删除</button>
+          </div>
+        </div>
+        `).join('')}
+      </div>
+      <button type="button" class="btn-add" onclick="addValueItem()">添加价值观</button>
+    </div>
+    
+    <div class="form-section">
+      <h3>主要成就</h3>
+      <div class="form-group">
+        <label>成就列表（每行一项）</label>
+        <textarea id="achievements" name="achievements" rows="5">${data.achievements.join('\n')}</textarea>
+      </div>
+    </div>
+    
+    <div class="form-section">
+      <h3>愿景与使命</h3>
+      <div class="form-group">
+        <label>公司愿景</label>
+        <textarea id="vision" name="visionMission[vision]" rows="2">${data.visionMission.vision}</textarea>
+      </div>
+      <div class="form-group">
+        <label>公司使命</label>
+        <textarea id="mission" name="visionMission[mission]" rows="2">${data.visionMission.mission}</textarea>
+      </div>
+    </div>
+    
+    <div class="form-section">
+      <h3>战略规划</h3>
+      <div class="form-group">
+        <label>规划描述</label>
+        <textarea id="strategic_description" name="strategicPlan[description]" rows="2">${data.strategicPlan.description}</textarea>
+      </div>
+      <div class="form-group">
+        <label>规划要点（每行一项）</label>
+        <textarea id="strategic_points" name="strategicPlan[points]" rows="5">${data.strategicPlan.points.join('\n')}</textarea>
+      </div>
+    </div>
+    
+    <div class="form-actions">
+      <button type="submit" class="btn-save">保存更改</button>
+      <a href="/dashboard" class="btn-cancel">取消</a>
+    </div>
+  </form>
+`,
+  script: `
+  <script>
+    // 添加时间线项
+    function addTimelineItem() {
+      const container = document.getElementById('timeline-container');
+      const index = container.children.length;
+      const newItem = document.createElement('div');
+      newItem.className = 'timeline-item-form';
+      newItem.innerHTML = `
+        <div class="form-row">
+          <div class="form-group">
+            <label>年份</label>
+            <input type="text" name="timeline[${index}][year]" required>
+          </div>
+          <div class="form-group">
+            <label>描述</label>
+            <input type="text" name="timeline[${index}][description]" required>
+          </div>
+          <button type="button" class="btn-remove" onclick="removeTimelineItem(this)">删除</button>
+        </div>
+      `;
+      container.appendChild(newItem);
+    }
+    
+    // 删除时间线项
+    function removeTimelineItem(button) {
+      const item = button.closest('.timeline-item-form');
+      item.remove();
+      updateTimelineIndices();
+    }
+    
+    // 更新时间线索引
+    function updateTimelineIndices() {
+      const container = document.getElementById('timeline-container');
+      Array.from(container.children).forEach((item, index) => {
+        const yearInput = item.querySelector('input[name^="timeline"][name$="[year]"]');
+        const descInput = item.querySelector('input[name^="timeline"][name$="[description]"]');
+        yearInput.name = `timeline[${index}][year]`;
+        descInput.name = `timeline[${index}][description]`;
+      });
+    }
+    
+    // 添加价值观项
+    function addValueItem() {
+      const container = document.getElementById('values-container');
+      const index = container.children.length;
+      const newItem = document.createElement('div');
+      newItem.className = 'value-item-form';
+      newItem.innerHTML = `
+        <div class="form-row">
+          <div class="form-group">
+            <label>标题</label>
+            <input type="text" name="coreValues[${index}][title]" required>
+          </div>
+          <div class="form-group">
+            <label>描述</label>
+            <input type="text" name="coreValues[${index}][description]" required>
+          </div>
+          <button type="button" class="btn-remove" onclick="removeValueItem(this)">删除</button>
+        </div>
+      `;
+      container.appendChild(newItem);
+    }
+    
+    // 删除价值观项
+    function removeValueItem(button) {
+      const item = button.closest('.value-item-form');
+      item.remove();
+      updateValueIndices();
+    }
+    
+    // 更新价值观索引
+    function updateValueIndices() {
+      const container = document.getElementById('values-container');
+      Array.from(container.children).forEach((item, index) => {
+        const titleInput = item.querySelector('input[name^="coreValues"][name$="[title]"]');
+        const descInput = item.querySelector('input[name^="coreValues"][name$="[description]"]');
+        titleInput.name = `coreValues[${index}][title]`;
+        descInput.name = `coreValues[${index}][description]`;
+      });
+    }
+  </script>
+`
+}) %>

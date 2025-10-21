@@ -1,0 +1,101 @@
+<%- include('../layout', { 
+  title: '服务管理', 
+  currentPage: 'services',
+  pageTitle: '服务内容管理',
+  body: `
+  <form action="/manage/services" method="post">
+    <div id="services-container">
+      ${data.map((service, index) => `
+      <div class="service-item-form">
+        <h4>服务项目 ${index + 1}</h4>
+        <div class="form-row">
+          <div class="form-group">
+            <label>标题</label>
+            <input type="text" name="title_${index}" value="${service.title}" required>
+          </div>
+          <div class="form-group">
+            <label>图标</label>
+            <input type="text" name="icon_${index}" value="${service.icon}" placeholder="例如: tech-support.svg">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>描述</label>
+          <textarea name="description_${index}" rows="2">${service.description}</textarea>
+        </div>
+        <div class="form-group">
+          <label>服务内容（每行一项）</label>
+          <textarea name="items_${index}" rows="4">${service.items.join('\n')}</textarea>
+        </div>
+        <button type="button" class="btn-remove" onclick="removeServiceItem(this)">删除服务</button>
+      </div>
+      `).join('')}
+    </div>
+    
+    <button type="button" class="btn-add" onclick="addServiceItem()">添加服务</button>
+    
+    <div class="form-actions">
+      <button type="submit" class="btn-save">保存更改</button>
+      <a href="/dashboard" class="btn-cancel">取消</a>
+    </div>
+  </form>
+`,
+  script: `
+  <script>
+    // 添加服务项
+    function addServiceItem() {
+      const container = document.getElementById('services-container');
+      const index = container.children.length;
+      const newItem = document.createElement('div');
+      newItem.className = 'service-item-form';
+      newItem.innerHTML = `
+        <h4>服务项目 ${index + 1}</h4>
+        <div class="form-row">
+          <div class="form-group">
+            <label>标题</label>
+            <input type="text" name="title_${index}" required>
+          </div>
+          <div class="form-group">
+            <label>图标</label>
+            <input type="text" name="icon_${index}" placeholder="例如: tech-support.svg">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>描述</label>
+          <textarea name="description_${index}" rows="2"></textarea>
+        </div>
+        <div class="form-group">
+          <label>服务内容（每行一项）</label>
+          <textarea name="items_${index}" rows="4"></textarea>
+        </div>
+        <button type="button" class="btn-remove" onclick="removeServiceItem(this)">删除服务</button>
+      `;
+      container.appendChild(newItem);
+    }
+    
+    // 删除服务项
+    function removeServiceItem(button) {
+      const item = button.closest('.service-item-form');
+      item.remove();
+      updateServiceIndices();
+    }
+    
+    // 更新服务索引
+    function updateServiceIndices() {
+      const container = document.getElementById('services-container');
+      Array.from(container.children).forEach((item, index) => {
+        item.querySelector('h4').textContent = `服务项目 ${index + 1}`;
+        
+        const titleInput = item.querySelector('input[name^="title_"]');
+        const iconInput = item.querySelector('input[name^="icon_"]');
+        const descInput = item.querySelector('textarea[name^="description_"]');
+        const itemsTextarea = item.querySelector('textarea[name^="items_"]');
+        
+        titleInput.name = `title_${index}`;
+        iconInput.name = `icon_${index}`;
+        descInput.name = `description_${index}`;
+        itemsTextarea.name = `items_${index}`;
+      });
+    }
+  </script>
+`
+}) %>

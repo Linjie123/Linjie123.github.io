@@ -1,0 +1,51 @@
+<%- include('../layout', { 
+  title: '首页管理', 
+  currentPage: 'home',
+  pageTitle: '首页内容管理',
+  body: `
+  <form action="/manage/home" method="post">
+    <div class="form-section">
+      <h3>基本信息</h3>
+      <div class="form-group">
+        <label for="headline">主标题</label>
+        <input type="text" id="headline" name="headline" value="${data.headline}" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="commitment">承诺宣言</label>
+        <textarea id="commitment" name="commitment" rows="3">${data.commitment}</textarea>
+      </div>
+    </div>
+    
+    <div class="form-section">
+      <h3>特色功能列表</h3>
+      <p class="form-hint">每行输入一项特色功能，使用回车分隔</p>
+      <div class="form-group">
+        <textarea id="features" name="features" rows="5">${data.features.join('\n')}</textarea>
+      </div>
+    </div>
+    
+    <div class="form-section">
+      <h3>统计数据</h3>
+      <div class="stats-grid">
+        <div class="form-group">
+          <label for="stats_experience">行业经验</label>
+          <input type="text" id="stats_experience" name="stats[experience]" value="${data.stats.experience}">
+        </div>
+        <div class="form-group">
+          <label for="stats_patents">技术专利</label>
+          <input type="text" id="stats_patents" name="stats[patents]" value="${data.stats.patents}">
+        </div>
+        <div class="form-group">
+          <label for="stats_partners">合作伙伴</label>
+          <input type="text" id="stats_partners" name="stats[partners]" value="${data.stats.partners}">
+        </div>
+      </div>
+    </div>
+    
+    <div class="form-actions">
+      <button type="submit" class="btn-save">保存更改</button>
+      <a href="/dashboard" class="btn-cancel">取消</a>
+    </div>
+  </form>
+` }) %>

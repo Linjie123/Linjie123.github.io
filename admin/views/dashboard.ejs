@@ -1,0 +1,116 @@
+<%- include('layout', { 
+  title: '仪表盘', 
+  currentPage: 'dashboard',
+  pageTitle: '系统概览',
+  body: `
+  <div class="dashboard-stats">
+    <div class="stat-card">
+      <div class="stat-icon content-icon">首页内容</div>
+      <div class="stat-info">
+        <div class="stat-number">1</div>
+        <div class="stat-label">可管理模块</div>
+      </div>
+      <a href="/manage/home" class="stat-link">管理</a>
+    </div>
+    
+    <div class="stat-card">
+      <div class="stat-icon about-icon">关于我们</div>
+      <div class="stat-info">
+        <div class="stat-number">8</div>
+        <div class="stat-label">可编辑部分</div>
+      </div>
+      <a href="/manage/about" class="stat-link">管理</a>
+    </div>
+    
+    <div class="stat-card">
+      <div class="stat-icon services-icon">服务内容</div>
+      <div class="stat-info">
+        <div class="stat-number">${data && data.services ? data.services.length : 4}</div>
+        <div class="stat-label">服务项目</div>
+      </div>
+      <a href="/manage/services" class="stat-link">管理</a>
+    </div>
+    
+    <div class="stat-card">
+      <div class="stat-icon solutions-icon">解决方案</div>
+      <div class="stat-info">
+        <div class="stat-number">${data && data.solutions ? data.solutions.length : 8}</div>
+        <div class="stat-label">解决方案</div>
+      </div>
+      <a href="/manage/solutions" class="stat-link">管理</a>
+    </div>
+  </div>
+  
+  <div class="dashboard-section">
+    <h3>快速操作</h3>
+    <div class="quick-actions">
+      <a href="/manage/home" class="action-card">
+        <i class="action-icon">🏠</i>
+        <span>管理首页内容</span>
+      </a>
+      <a href="/manage/about" class="action-card">
+        <i class="action-icon">ℹ️</i>
+        <span>编辑关于我们</span>
+      </a>
+      <a href="/manage/services" class="action-card">
+        <i class="action-icon">🔧</i>
+        <span>更新服务信息</span>
+      </a>
+      <a href="/manage/solutions" class="action-card">
+        <i class="action-icon">💡</i>
+        <span>修改解决方案</span>
+      </a>
+      <a href="/manage/contact" class="action-card">
+        <i class="action-icon">📞</i>
+        <span>更新联系方式</span>
+      </a>
+      <a href="/export" class="action-card">
+        <i class="action-icon">📥</i>
+        <span>导出所有数据</span>
+      </a>
+    </div>
+  </div>
+  
+  <div class="dashboard-section">
+    <h3>系统信息</h3>
+    <div class="system-info">
+      <p><strong>系统版本：</strong>1.0.0</p>
+      <p><strong>最后更新时间：</strong>${new Date().toLocaleString('zh-CN')}</p>
+      <p><strong>数据存储位置：</strong>本地JSON文件</p>
+      <p><strong>支持的功能：</strong>内容管理、数据导出、实时预览</p>
+    </div>
+  </div>
+  
+  <div class="dashboard-section">
+    <h3>使用提示</h3>
+    <div class="usage-tips">
+      <ul>
+        <li>请确保在编辑内容后点击保存按钮</li>
+        <li>对于列表项，请使用回车分隔多行内容</li>
+        <li>可以通过导出功能备份网站数据</li>
+        <li>修改内容后请刷新前端页面查看效果</li>
+      </ul>
+    </div>
+  </div>
+`,
+  script: `
+  <script>
+    // 页面加载时获取数据统计
+    document.addEventListener('DOMContentLoaded', function() {
+      fetch('/export')
+        .then(response => response.json())
+        .then(data => {
+          const stats = {
+            services: data.services ? data.services.length : 4,
+            solutions: data.solutions ? data.solutions.length : 8
+          };
+          
+          // 更新统计数字
+          document.querySelectorAll('.stat-number')[2].textContent = stats.services;
+          document.querySelectorAll('.stat-number')[3].textContent = stats.solutions;
+        })
+        .catch(error => console.error('获取数据统计失败:', error));
+    });
+  </script>
+`
+}) %>
