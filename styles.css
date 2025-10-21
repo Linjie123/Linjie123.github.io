@@ -288,7 +288,7 @@ footer {
   position: relative;
 }
 
-.core-values li:before, .achievements li:before {
+.core-values li:before, .achievements li:before, .tech-capabilities li:before, .strategic-plan li:before {
   content: "•";
   color: #3498db;
   font-size: 1.5rem;
@@ -300,6 +300,140 @@ footer {
 .core-values strong {
   color: #2c3e50;
   margin-right: 0.5rem;
+}
+
+/* 时间线样式 */
+.timeline {
+  position: relative;
+  max-width: 1200px;
+  margin: 1rem auto;
+}
+
+.timeline::after {
+  content: '';
+  position: absolute;
+  width: 4px;
+  background-color: #3498db;
+  top: 0;
+  bottom: 0;
+  left: 15px;
+  margin-left: -2px;
+}
+
+.timeline-item {
+  padding: 10px 40px;
+  position: relative;
+  background-color: inherit;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.timeline-item::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  border: 4px solid #3498db;
+  top: 15px;
+  border-radius: 50%;
+  z-index: 1;
+  left: 8px;
+}
+
+.timeline-year {
+  font-weight: bold;
+  color: #3498db;
+  font-size: 1.2rem;
+  margin-right: 0.5rem;
+}
+
+/* 团队部分样式 */
+.team-section {
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.team-section ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.team-section li {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.team-section li:before {
+  content: "•";
+  color: #3498db;
+  font-size: 1.5rem;
+  position: absolute;
+  left: 0;
+  top: -0.2rem;
+}
+
+/* 技术实力部分样式 */
+.tech-capabilities {
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.tech-capabilities ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.tech-capabilities li {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+/* 愿景与使命部分样式 */
+.vision-mission {
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.vision-mission p {
+  margin-bottom: 1rem;
+  line-height: 1.8;
+}
+
+.vision-mission strong {
+  color: #2c3e50;
+  font-size: 1.1rem;
+}
+
+/* 战略规划部分样式 */
+.strategic-plan {
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.strategic-plan ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.strategic-plan li {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+  position: relative;
 }
 
 /* 响应式设计 */
