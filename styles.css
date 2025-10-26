@@ -5,169 +5,104 @@
 }
 
 :root {
-    --primary-color: #0056b3;
-    --secondary-color: #00c6ff;
-    --accent-color: #007bff;
-    --dark-bg: #0a1929;
-    --light-text: #ffffff;
-    --highlight-color: #00ffcc;
-    --card-bg: rgba(255, 255, 255, 0.05);
-    --border-glow: 0 0 10px rgba(0, 198, 255, 0.5);
+    --primary-color: #1a73e8;
+    --secondary-color: #5f6368;
+    --light-color: #f8f9fa;
+    --dark-color: #202124;
+    --text-color: #3c4043;
+    --border-color: #dadce0;
+    --hover-color: #f1f3f4;
+    --shadow-color: rgba(0, 0, 0, 0.1);
 }
 
 body {
     font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
     line-height: 1.6;
-    background: linear-gradient(135deg, #0a1929 0%, #112942 50%, #0a1929 100%);
-    color: var(--light-text);
+    background-color: #ffffff;
+    color: var(--text-color);
     min-height: 100vh;
-    position: relative;
-    overflow-x: hidden;
-}
-
-/* 科技背景装饰 */
-body::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: 
-        radial-gradient(circle at 20% 30%, rgba(0, 198, 255, 0.05) 0%, transparent 20%),
-        radial-gradient(circle at 80% 70%, rgba(0, 198, 255, 0.05) 0%, transparent 20%),
-        linear-gradient(90deg, rgba(0, 198, 255, 0.03) 1px, transparent 1px),
-        linear-gradient(rgba(0, 198, 255, 0.03) 1px, transparent 1px);
-    background-size: 100% 100%, 100% 100%, 20px 20px, 20px 20px;
-    z-index: -1;
 }
 
 header {
-    background: rgba(10, 25, 41, 0.8);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(0, 198, 255, 0.2);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    background-color: #ffffff;
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: 0 1px 2px var(--shadow-color);
     padding: 1rem 0;
     position: sticky;
     top: 0;
     z-index: 100;
     display: flex;
     align-items: center;
-    justify-content: center;
-    padding: 1rem 2rem;
-    gap: 3rem;
+    justify-content: space-between;
+    padding: 0.5rem 2rem;
 }
 
 header h1 {
     text-align: left;
-    color: var(--light-text);
+    color: var(--dark-color);
     margin-bottom: 0;
-    flex-shrink: 0;
-    width: 30%;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: 600;
-    letter-spacing: 0.5px;
 }
 
 .navbar {
     display: flex;
-    justify-content: center;
-    gap: 2rem;
-    padding: 1rem;
-    margin-left: 2rem;
-    flex-grow: 1;
+    gap: 1.5rem;
 }
 
 .navbar a {
     text-decoration: none;
-    color: rgba(255, 255, 255, 0.8);
-    padding: 0.7rem 1.2rem;
+    color: var(--secondary-color);
+    padding: 0.5rem 0.8rem;
     border-radius: 4px;
-    border: 1px solid transparent;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
     font-weight: 500;
-    position: relative;
-    overflow: hidden;
-}
-
-.navbar a::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: -100%;
-    width: 100%;
-    height: 2px;
-    background: var(--highlight-color);
-    transition: all 0.3s ease;
 }
 
 .navbar a:hover {
-    color: var(--highlight-color);
-    border-color: rgba(0, 255, 204, 0.3);
-    transform: translateY(-1px);
-}
-
-.navbar a:hover::after {
-    left: 0;
+    background-color: var(--hover-color);
+    color: var(--primary-color);
 }
 
 .navbar a.active {
-    color: var(--highlight-color);
-    background: rgba(0, 255, 204, 0.05);
-    border-color: var(--highlight-color);
+    color: var(--primary-color);
+    font-weight: 600;
 }
 
-.navbar a.active::after {
-    left: 0;
+.navbar h1 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
-.content {
-    max-width: 1200px;
-    margin: 2rem auto;
-    padding: 0 2rem;
+.company-logo {
+    height: 40px;
+    width: auto;
+    vertical-align: middle;
+    margin-right: 10px;
 }
 
 section {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(10, 25, 41, 0.5) 100%);
+    background-color: #ffffff;
     padding: 2rem;
     border-radius: 8px;
-    border: 1px solid rgba(0, 198, 255, 0.1);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 15px rgba(0, 198, 255, 0.1);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 1px 3px var(--shadow-color);
     margin-bottom: 2rem;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.6s ease;
     display: none;
-    position: relative;
-    backdrop-filter: blur(5px);
-    overflow: hidden;
-}
-
-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 3px;
-    background: linear-gradient(90deg, var(--secondary-color), var(--highlight-color), var(--secondary-color));
-    opacity: 0.7;
 }
 
 section.active {
     display: block;
-    opacity: 1;
-    transform: translateY(0);
 }
 
 section h2 {
-    color: var(--highlight-color);
-    font-size: 2rem;
+    color: var(--dark-color);
+    font-size: 1.8rem;
     margin-bottom: 1.5rem;
     position: relative;
     padding-bottom: 0.5rem;
     font-weight: 600;
-    letter-spacing: 0.5px;
 }
 
 section h2::after {
@@ -175,566 +110,16 @@ section h2::after {
     position: absolute;
     bottom: 0;
     left: 0;
-    width: 80px;
-    height: 2px;
-    background: linear-gradient(90deg, var(--highlight-color), transparent);
+    width: 60px;
+    height: 3px;
+    background-color: var(--primary-color);
 }
 
 section h3 {
-    color: var(--secondary-color);
+    color: var(--dark-color);
     margin-bottom: 1rem;
-    font-weight: 500;
-}
-
-#services ul {
-    list-style: none;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1rem;
-    margin-top: 1rem;
-}
-
-#services li {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(0, 198, 255, 0.1);
-    padding: 1rem;
-    border-radius: 8px;
-    text-align: center;
-    transition: all 0.3s ease;
-    color: var(--light-text);
-}
-
-#services li:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(0, 198, 255, 0.15);
-    border-color: var(--highlight-color);
-}
-
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 1.5rem;
-    background: rgba(255, 255, 255, 0.02);
-    border-radius: 8px;
-    border: 1px solid rgba(0, 198, 255, 0.1);
-}
-
-form label {
-    color: var(--light-text);
-    font-weight: 500;
-    letter-spacing: 0.5px;
-}
-
-form input, form textarea {
-    width: 100%;
-    padding: 0.8rem;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(0, 198, 255, 0.2);
-    border-radius: 4px;
-    font-size: 1rem;
-    color: var(--light-text);
-    transition: all 0.3s ease;
-}
-
-form input:focus, form textarea:focus {
-    outline: none;
-    border-color: var(--highlight-color);
-    box-shadow: 0 0 10px rgba(0, 255, 204, 0.2);
-}
-
-form input[type="submit"] {
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    color: white;
-    border: none;
-    padding: 1rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-weight: 500;
-    letter-spacing: 1px;
-    position: relative;
-    overflow: hidden;
-}
-
-form input[type="submit"]:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0, 198, 255, 0.3);
-}
-
-form input[type="submit"]:active {
-    transform: translateY(0);
-}
-
-footer {
-    text-align: center;
-    padding: 2rem;
-    background: rgba(10, 25, 41, 0.8);
-    backdrop-filter: blur(10px);
-    border-top: 1px solid rgba(0, 198, 255, 0.2);
-    margin-top: 2rem;
-    color: rgba(255, 255, 255, 0.7);
-    position: relative;
-}
-
-footer::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--secondary-color), transparent);
-    opacity: 0.5;
-}
-
-@media (max-width: 768px) {
-    .navbar {
-        flex-direction: column;
-        align-items: center;
-        gap: 1rem;
-    }
-    
-    .content {
-        padding: 0 1rem;
-    }
-    
-    section {
-        padding: 1.5rem;
-    }
-}
-
-/* 公司介绍部分样式 */
-.company-intro {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem;
-}
-
-.intro-text {
-  margin-bottom: 2rem;
-}
-
-.headline {
-  font-size: 1.5rem;
-  color: var(--light-text);
-  margin-bottom: 1.5rem;
-  line-height: 1.8;
-  text-shadow: 0 0 10px rgba(0, 198, 255, 0.2);
-}
-
-.features-list {
-  list-style: none;
-  padding: 0;
-  margin: 1.5rem 0;
-}
-
-.features-list li {
-  padding: 0.8rem 0;
-  padding-left: 2rem;
-  position: relative;
-  color: rgba(255, 255, 255, 0.85);
-  transition: all 0.3s ease;
-}
-
-.features-list li:before {
-  content: "▶";
-  color: var(--highlight-color);
-  font-weight: bold;
-  position: absolute;
-  left: 0;
-  transition: all 0.3s ease;
-}
-
-.features-list li:hover {
-  color: var(--highlight-color);
-  transform: translateX(5px);
-}
-
-.features-list li:hover:before {
-  color: var(--secondary-color);
-}
-
-.commitment {
-  font-style: italic;
-  color: rgba(255, 255, 255, 0.8);
-  margin: 1.5rem 0;
-  padding: 1rem;
-  border-left: 3px solid var(--highlight-color);
-  background: rgba(0, 255, 204, 0.05);
-  border-radius: 0 4px 4px 0;
-}
-
-.intro-stats {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  gap: 2rem;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(0, 198, 255, 0.1);
-  padding: 2rem;
-  border-radius: 8px;
-  position: relative;
-  overflow: hidden;
-}
-
-.intro-stats::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: linear-gradient(45deg, rgba(0, 198, 255, 0.05) 25%, transparent 25%, transparent 50%, rgba(0, 198, 255, 0.05) 50%, rgba(0, 198, 255, 0.05) 75%, transparent 75%, transparent);
-  background-size: 10px 10px;
-  z-index: -1;
-}
-
-.stat-item {
-  text-align: center;
-  transition: all 0.3s ease;
-  padding: 1rem;
-  border-radius: 4px;
-}
-
-.stat-item:hover {
-  transform: translateY(-5px);
-  background: rgba(0, 198, 255, 0.05);
-}
-
-.stat-number {
-  display: block;
-  font-size: 2.8rem;
-  font-weight: bold;
-  color: var(--secondary-color);
-  text-shadow: 0 0 10px rgba(0, 198, 255, 0.3);
-  transition: all 0.3s ease;
-}
-
-.stat-item:hover .stat-number {
-  color: var(--highlight-color);
-}
-
-.stat-label {
-  display: block;
-  color: rgba(255, 255, 255, 0.7);
-  margin-top: 0.5rem;
-  text-transform: uppercase;
-  font-size: 0.9rem;
-  letter-spacing: 1px;
-}
-
-/* 响应式布局 */
-@media (max-width: 768px) {
-  .intro-stats {
-    flex-direction: column;
-    gap: 1rem;
-  }
-  
-  .headline {
-    font-size: 1.25rem;
-  }
-}
-
-/* 关于我们部分的样式 */
-.about-content {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem;
-}
-
-.about-content p {
-  font-size: 1.1rem;
-  line-height: 1.8;
-  color: rgba(255, 255, 255, 0.85);
-  margin-bottom: 1.5rem;
-  text-shadow: 0 0 5px rgba(0, 198, 255, 0.1);
-}
-
-.company-history, .core-values, .achievements, .team-section, .tech-capabilities, .vision-mission, .strategic-plan {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(0, 198, 255, 0.1);
-  border-radius: 8px;
-  padding: 2rem;
-  margin-bottom: 2rem;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-.company-history:hover, .core-values:hover, .achievements:hover, .team-section:hover, .tech-capabilities:hover, .vision-mission:hover, .strategic-plan:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(0, 198, 255, 0.15);
-  border-color: rgba(0, 255, 204, 0.2);
-}
-
-.company-history::before, .core-values::before, .achievements::before, .team-section::before, .tech-capabilities::before, .vision-mission::before, .strategic-plan::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 4px;
-  height: 100%;
-  background: linear-gradient(to bottom, var(--secondary-color), var(--highlight-color));
-  opacity: 0.7;
-}
-
-.about-content h3 {
-  color: var(--secondary-color);
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 1px solid rgba(0, 198, 255, 0.2);
-  position: relative;
-}
-
-.about-content h3::after {
-  content: '';
-  position: absolute;
-  bottom: -1px;
-  left: 0;
-  width: 50px;
-  height: 1px;
-  background: var(--highlight-color);
-}
-
-.core-values ul, .achievements ul, .team-section ul, .tech-capabilities ul, .strategic-plan ul {
-  list-style: none;
-  padding-left: 0;
-}
-
-.core-values li, .achievements li, .tech-capabilities li, .strategic-plan li, .team-section li {
-  margin-bottom: 1rem;
-  padding-left: 1.5rem;
-  position: relative;
-  color: rgba(255, 255, 255, 0.8);
-  transition: all 0.3s ease;
-}
-
-.core-values li:hover, .achievements li:hover, .tech-capabilities li:hover, .strategic-plan li:hover, .team-section li:hover {
-  color: var(--highlight-color);
-  transform: translateX(5px);
-}
-
-.core-values li:before, .achievements li:before, .tech-capabilities li:before, .strategic-plan li:before, .team-section li:before {
-  content: "●";
-  color: var(--highlight-color);
-  font-size: 0.8rem;
-  position: absolute;
-  left: 0;
-  top: 0.5rem;
-  text-shadow: 0 0 5px var(--highlight-color);
-  transition: all 0.3s ease;
-}
-
-.core-values li:hover:before, .achievements li:hover:before, .tech-capabilities li:hover:before, .strategic-plan li:hover:before, .team-section li:hover:before {
-  transform: scale(1.5);
-}
-
-.core-values strong {
-  color: var(--highlight-color);
-  margin-right: 0.5rem;
-}
-
-/* 时间线样式 */
-.timeline {
-  position: relative;
-  max-width: 1200px;
-  margin: 1rem auto;
-}
-
-.timeline::after {
-  content: '';
-  position: absolute;
-  width: 2px;
-  background: linear-gradient(to bottom, var(--secondary-color), var(--highlight-color));
-  top: 0;
-  bottom: 0;
-  left: 20px;
-  opacity: 0.7;
-  box-shadow: 0 0 10px rgba(0, 198, 255, 0.3);
-}
-
-.timeline-item {
-  padding: 15px 40px;
-  position: relative;
-  background-color: rgba(255, 255, 255, 0.02);
-  border-radius: 4px;
-  width: 100%;
-  margin-bottom: 1.5rem;
-  border-left: 1px solid rgba(0, 198, 255, 0.1);
-  transition: all 0.3s ease;
-}
-
-.timeline-item:hover {
-  background-color: rgba(0, 198, 255, 0.05);
-  transform: translateX(5px);
-  border-left-color: var(--highlight-color);
-}
-
-.timeline-item::after {
-  content: '';
-  position: absolute;
-  width: 16px;
-  height: 16px;
-  background: radial-gradient(circle, white 25%, var(--highlight-color) 100%);
-  top: 20px;
-  border-radius: 50%;
-  z-index: 1;
-  left: 20px;
-  margin-left: -8px;
-  box-shadow: 0 0 15px rgba(0, 255, 204, 0.5);
-  animation: pulse 3s infinite;
-}
-
-@keyframes pulse {
-  0% {
-    box-shadow: 0 0 15px rgba(0, 255, 204, 0.5);
-  }
-  50% {
-    box-shadow: 0 0 20px rgba(0, 255, 204, 0.8);
-  }
-  100% {
-    box-shadow: 0 0 15px rgba(0, 255, 204, 0.5);
-  }
-}
-
-.timeline-year {
-  font-weight: bold;
-  color: var(--highlight-color);
-  font-size: 1.2rem;
-  margin-right: 0.5rem;
-  text-shadow: 0 0 5px rgba(0, 255, 204, 0.5);
-}
-
-.timeline-item p {
-  color: rgba(255, 255, 255, 0.8);
-  margin: 0.5rem 0 0 0;
-}
-
-/* 愿景与使命部分样式 */
-.vision-mission p {
-  margin-bottom: 1rem;
-  line-height: 1.8;
-  color: rgba(255, 255, 255, 0.85);
-}
-
-.vision-mission strong {
-  color: var(--highlight-color);
-  font-size: 1.1rem;
-  text-shadow: 0 0 5px rgba(0, 255, 204, 0.3);
-}
-
-/* 响应式设计 */
-@media (max-width: 768px) {
-  .about-content {
-    padding: 1rem;
-  }
-  
-  .company-history, .core-values, .achievements {
-    padding: 1.5rem;
-  }
-  
-  .about-content h3 {
+    font-weight: 600;
     font-size: 1.3rem;
-  }
-  
-  .about-content p {
-    font-size: 1rem;
-  }
-}
-
-/* 联系我们部分样式 */
-#contact {
-  padding: 40px 20px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.contact-info {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.contact-details {
-  background-color: #f5f5f5;
-  padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  width: 100%;
-}
-
-.contact-details h3 {
-  color: #333;
-  margin-bottom: 20px;
-  font-size: 1.5em;
-}
-
-.contact-details p {
-  margin: 12px 0;
-  color: #555;
-  line-height: 1.6;
-}
-
-/* 表单样式 */
-form {
-  display: flex;
-  flex-direction: column;
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-form label {
-  margin: 10px 0 5px;
-  color: #333;
-  font-weight: 500;
-}
-
-form input[type="text"],
-form input[type="email"],
-form textarea {
-  padding: 12px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  margin-bottom: 15px;
-  font-size: 16px;
-}
-
-form textarea {
-  resize: vertical;
-  min-height: 120px;
-}
-
-form input[type="submit"] {
-  background-color: #1a73e8;
-  color: white;
-  padding: 14px 24px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 16px;
-  font-weight: 500;
-  transition: background-color 0.3s;
-}
-
-form input[type="submit"]:hover {
-  background-color: #1557b0;
-}
-
-/* 响应式布局 */
-@media (max-width: 768px) {
-  .contact-details {
-    padding: 20px;
-  }
-  
-  form {
-    padding: 0 15px;
-  }
 }
 
 /* 服务网格布局 */
@@ -742,22 +127,23 @@ form input[type="submit"]:hover {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 2rem;
-    padding: 2rem 0;
+    padding: 1rem 0;
 }
 
 /* 服务项样式 */
 .service-item {
-    background: #f8f9fa;
+    background: #ffffff;
     padding: 2rem;
-    border-radius: 10px;
+    border-radius: 8px;
     text-align: center;
     transition: all 0.3s ease;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 1px 3px var(--shadow-color);
 }
 
 .service-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px var(--shadow-color);
 }
 
 /* 图标容器样式 */
@@ -778,13 +164,15 @@ form input[type="submit"]:hover {
 
 /* 服务项文本样式 */
 .service-item h3 {
-    color: #2c3e50;
+    color: var(--dark-color);
     margin-bottom: 1rem;
+    font-size: 1.2rem;
 }
 
 .service-item p {
-    color: #666;
+    color: var(--secondary-color);
     margin-bottom: 1rem;
+    line-height: 1.6;
 }
 
 .service-item ul {
@@ -797,76 +185,383 @@ form input[type="submit"]:hover {
     margin: 0.5rem 0;
     padding-left: 1.5rem;
     position: relative;
+    color: var(--secondary-color);
 }
 
 .service-item li:before {
     content: "•";
-    color: #3498db;
+    color: var(--primary-color);
     position: absolute;
     left: 0;
+    font-weight: bold;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 1.5rem;
+    background: #ffffff;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 1px 3px var(--shadow-color);
+}
+
+form label {
+    color: var(--dark-color);
+    font-weight: 500;
+    margin: 0.8rem 0 0.4rem;
+}
+
+form input[type="text"],
+form input[type="email"],
+form textarea {
+    width: 100%;
+    padding: 0.8rem;
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 1rem;
+    color: var(--text-color);
+    transition: all 0.2s ease;
+}
+
+form input:focus, form textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(26, 115, 232, 0.2);
+}
+
+form input[type="submit"] {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    font-weight: 500;
+    margin-top: 1rem;
+    border-radius: 4px;
+}
+
+form input[type="submit"]:hover {
+    background-color: #1557b0;
+}
+
+form input[type="submit"]:active {
+    transform: translateY(1px);
+}
+
+footer {
+    text-align: center;
+    padding: 2rem;
+    background-color: #f8f9fa;
+    border-top: 1px solid var(--border-color);
+    margin-top: 2rem;
+    color: var(--secondary-color);
+}
+
+/* 公司介绍部分样式 */
+.company-intro {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.intro-text {
+  margin-bottom: 2rem;
+}
+
+.headline {
+  font-size: 1.4rem;
+  color: var(--text-color);
+  margin-bottom: 1.5rem;
+  line-height: 1.7;
+}
+
+.features-list {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0;
+}
+
+.features-list li {
+  padding: 0.8rem 0;
+  padding-left: 1.5rem;
+  position: relative;
+  color: var(--secondary-color);
+  transition: all 0.2s ease;
+}
+
+.features-list li:before {
+  content: "•";
+  color: var(--primary-color);
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+}
+
+.commitment {
+  font-style: italic;
+  color: var(--secondary-color);
+  margin: 1.5rem 0;
+  padding: 1rem;
+  border-left: 3px solid var(--primary-color);
+  background-color: var(--hover-color);
+  border-radius: 0 4px 4px 0;
+}
+
+.intro-stats {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 2rem;
+  background-color: #f8f9fa;
+  border: 1px solid var(--border-color);
+  padding: 2rem;
+  border-radius: 8px;
+  margin-top: 2rem;
+}
+
+.stat-item {
+  text-align: center;
+  padding: 1rem;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.stat-item:hover {
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px var(--shadow-color);
+}
+
+.stat-number {
+  display: block;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+.stat-label {
+  display: block;
+  color: var(--secondary-color);
+  margin-top: 0.5rem;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+}
+
+/* 关于我们部分的样式 */
+.about-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.about-content p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-color);
+  margin-bottom: 1.5rem;
+}
+
+.company-history, .core-values, .achievements, .team-section, .tech-capabilities, .vision-mission, .strategic-plan {
+  background-color: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 1px 3px var(--shadow-color);
+  transition: all 0.2s ease;
+}
+
+.company-history:hover, .core-values:hover, .achievements:hover, .team-section:hover, .tech-capabilities:hover, .vision-mission:hover, .strategic-plan:hover {
+  box-shadow: 0 4px 8px var(--shadow-color);
+}
+
+.about-content h3 {
+  color: var(--dark-color);
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.core-values ul, .achievements ul, .team-section ul, .tech-capabilities ul, .strategic-plan ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.core-values li, .achievements li, .tech-capabilities li, .strategic-plan li, .team-section li {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+  position: relative;
+  color: var(--secondary-color);
+  line-height: 1.6;
+}
+
+.core-values li:before, .achievements li:before, .tech-capabilities li:before, .strategic-plan li:before, .team-section li:before {
+  content: "•";
+  color: var(--primary-color);
+  font-size: 1rem;
+  position: absolute;
+  left: 0;
+  top: 0.3rem;
+}
+
+.core-values strong {
+  color: var(--primary-color);
+  margin-right: 0.5rem;
+}
+
+/* 时间线样式 */
+.timeline {
+  position: relative;
+  max-width: 1200px;
+  margin: 1rem auto;
+  padding-left: 30px;
+}
+
+.timeline::after {
+  content: '';
+  position: absolute;
+  width: 2px;
+  background-color: var(--border-color);
+  top: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.timeline-item {
+  padding: 15px 20px;
+  position: relative;
+  background-color: #ffffff;
+  border-radius: 4px;
+  width: 100%;
+  margin-bottom: 1.5rem;
+  border-left: 1px solid var(--border-color);
+  box-shadow: 0 1px 3px var(--shadow-color);
+  transition: all 0.2s ease;
+}
+
+.timeline-item:hover {
+  box-shadow: 0 3px 6px var(--shadow-color);
+}
+
+.timeline-item::after {
+  content: '';
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background-color: var(--primary-color);
+  top: 20px;
+  border-radius: 50%;
+  z-index: 1;
+  left: -6px;
+  border: 2px solid #ffffff;
+}
+
+.timeline-year {
+  font-weight: bold;
+  color: var(--primary-color);
+  font-size: 1.1rem;
+  margin-right: 0.5rem;
+}
+
+.timeline-item p {
+  color: var(--secondary-color);
+  margin: 0.5rem 0 0 0;
+  line-height: 1.6;
+}
+
+/* 愿景与使命部分样式 */
+.vision-mission p {
+  margin-bottom: 1rem;
+  line-height: 1.6;
+  color: var(--text-color);
+}
+
+.vision-mission strong {
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+/* 联系我们部分样式 */
+#contact {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.contact-info {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.contact-details {
+  background-color: #f8f9fa;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px var(--shadow-color);
+  width: 100%;
+  border: 1px solid var(--border-color);
+}
+
+.contact-details h3 {
+  color: var(--dark-color);
+  margin-bottom: 20px;
+  font-size: 1.3rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.5rem;
+}
+
+.contact-details p {
+  margin: 12px 0;
+  color: var(--secondary-color);
+  line-height: 1.6;
 }
 
 /* 解决方案部分样式 */
 .solutions-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 25px;
+  gap: 20px;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 1rem;
 }
 
 .solution-item {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(0, 198, 255, 0.1);
+  background-color: #ffffff;
+  border: 1px solid var(--border-color);
   border-radius: 8px;
-  padding: 2rem;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-.solution-item::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 3px;
-  background: linear-gradient(to right, var(--secondary-color), var(--highlight-color));
-  opacity: 0.7;
+  padding: 1.5rem;
+  box-shadow: 0 1px 3px var(--shadow-color);
+  transition: all 0.2s ease;
 }
 
 .solution-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(0, 198, 255, 0.2);
-  border-color: rgba(0, 255, 204, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px var(--shadow-color);
 }
 
 .solution-item h3 {
-  color: var(--secondary-color);
+  color: var(--dark-color);
   margin-bottom: 1rem;
-  font-size: 1.3rem;
-  position: relative;
+  font-size: 1.2rem;
   padding-bottom: 0.5rem;
-}
-
-.solution-item h3::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 30px;
-  height: 2px;
-  background: var(--highlight-color);
-  box-shadow: 0 0 5px var(--highlight-color);
+  border-bottom: 1px solid var(--border-color);
 }
 
 .solution-item p {
-  color: rgba(255, 255, 255, 0.8);
+  color: var(--secondary-color);
   line-height: 1.6;
   font-size: 0.95rem;
+  margin-bottom: 1rem;
 }
 
 .solution-item ul {
@@ -879,45 +574,93 @@ form input[type="submit"]:hover {
   margin: 0.5rem 0;
   padding-left: 1.5rem;
   position: relative;
-  color: rgba(255, 255, 255, 0.7);
+  color: var(--secondary-color);
+  line-height: 1.5;
 }
 
 .solution-item li:before {
-  content: "▶";
-  color: var(--highlight-color);
+  content: "•";
+  color: var(--primary-color);
   position: absolute;
   left: 0;
-  font-size: 0.8rem;
+  font-weight: bold;
 }
 
-/* 添加解决方案项的发光效果 */
-.solution-item {
-  transition: all 0.3s ease, box-shadow 0.6s ease;
-}
-
-.solution-item:hover {
-  box-shadow: 0 4px 20px rgba(0, 198, 255, 0.1), 
-              0 0 20px rgba(0, 198, 255, 0.1), 
-              inset 0 0 1px rgba(255, 255, 255, 0.1);
-}
-
+/* 响应式布局 */
 @media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    padding: 0.5rem 1rem;
+    align-items: flex-start;
+  }
+  
+  .navbar {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+  }
+  
+  .navbar a {
+    padding: 0.4rem 0.6rem;
+    font-size: 0.9rem;
+  }
+  
+  section {
+    padding: 1.5rem 1rem;
+  }
+  
+  section h2 {
+    font-size: 1.5rem;
+  }
+  
+  .content {
+    padding: 0 1rem;
+  }
+  
+  .intro-stats {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .headline {
+    font-size: 1.25rem;
+  }
+  
+  .about-content {
+    padding: 1rem;
+  }
+  
+  .company-history, .core-values, .achievements {
+    padding: 1.5rem 1rem;
+  }
+  
+  .about-content h3 {
+    font-size: 1.3rem;
+  }
+  
+  .about-content p {
+    font-size: 1rem;
+  }
+  
+  .contact-details {
+    padding: 1.5rem 1rem;
+  }
+  
+  form {
+    padding: 1rem;
+  }
+  
+  .services-grid {
+    gap: 1rem;
+  }
+  
+  .service-item {
+    padding: 1.5rem 1rem;
+  }
+  
   .solutions-grid {
     grid-template-columns: 1fr;
     padding: 1rem;
     gap: 1.5rem;
   }
-}
-
-.navbar h1 {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.company-logo {
-  height: 40px;
-  width: auto;
-  vertical-align: middle;
-  margin-right: 10px;
 }
