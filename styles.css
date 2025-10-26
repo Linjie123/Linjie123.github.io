@@ -27,14 +27,13 @@ header {
     background-color: #ffffff;
     border-bottom: 1px solid var(--border-color);
     box-shadow: 0 1px 2px var(--shadow-color);
-    padding: 1rem 0;
     position: sticky;
     top: 0;
     z-index: 100;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0.5rem 2rem;
+    padding: 1rem 2rem;
 }
 
 header h1 {
@@ -48,6 +47,7 @@ header h1 {
 .navbar {
     display: flex;
     gap: 1.5rem;
+    align-items: center;
 }
 
 .navbar a {
@@ -73,13 +73,43 @@ header h1 {
     display: flex;
     align-items: center;
     gap: 10px;
+    margin: 0;
 }
 
 .company-logo {
     height: 40px;
     width: auto;
     vertical-align: middle;
-    margin-right: 10px;
+}
+
+/* 汉堡菜单样式 */
+.hamburger {
+    display: none;
+    cursor: pointer;
+    width: 30px;
+    height: 24px;
+    position: relative;
+}
+
+.hamburger div {
+    width: 100%;
+    height: 3px;
+    background-color: var(--dark-color);
+    position: absolute;
+    left: 0;
+    transition: all 0.3s ease;
+}
+
+.hamburger div:nth-child(1) {
+    top: 0;
+}
+
+.hamburger div:nth-child(2) {
+    top: 10px;
+}
+
+.hamburger div:nth-child(3) {
+    bottom: 0;
 }
 
 section {
@@ -88,7 +118,8 @@ section {
     border-radius: 8px;
     border: 1px solid var(--border-color);
     box-shadow: 0 1px 3px var(--shadow-color);
-    margin-bottom: 2rem;
+    margin: 0 auto 2rem;
+    max-width: 1200px;
     display: none;
 }
 
@@ -260,13 +291,14 @@ footer {
     border-top: 1px solid var(--border-color);
     margin-top: 2rem;
     color: var(--secondary-color);
+    width: 100%;
+    font-size: 0.9rem;
 }
 
 /* 公司介绍部分样式 */
 .company-intro {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 1rem;
+  width: 100%;
+  padding: 0;
 }
 
 .intro-text {
@@ -354,9 +386,8 @@ footer {
 
 /* 关于我们部分的样式 */
 .about-content {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 1rem;
+  width: 100%;
+  padding: 0;
 }
 
 .about-content p {
@@ -489,9 +520,9 @@ footer {
 
 /* 联系我们部分样式 */
 #contact {
-  padding: 20px;
+  padding: 2rem;
+  margin: 0 auto 2rem;
   max-width: 1200px;
-  margin: 0 auto;
 }
 
 .contact-info {
@@ -530,9 +561,8 @@ footer {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 20px;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 1rem;
+  width: 100%;
+  padding: 0;
 }
 
 .solution-item {
@@ -586,18 +616,39 @@ footer {
   font-weight: bold;
 }
 
+/* 为移动设备添加默认隐藏导航栏 */
+@media (max-width: 768px) {
+  .navbar {
+    display: none;
+  }
+}
+
 /* 响应式布局 */
 @media (max-width: 768px) {
   header {
     flex-direction: column;
-    padding: 0.5rem 1rem;
+    padding: 1rem;
     align-items: flex-start;
+  }
+  
+  .hamburger {
+    display: block;
+    position: absolute;
+    right: 1rem;
+    top: 1.5rem;
   }
   
   .navbar {
     flex-wrap: wrap;
     gap: 0.5rem;
-    margin-top: 0.5rem;
+    margin-top: 1rem;
+    width: 100%;
+    justify-content: center;
+  }
+  
+  /* 确保在移动设备上切换显示的导航栏是flex布局 */
+  .navbar[style*="display: flex"] {
+    display: flex;
   }
   
   .navbar a {
@@ -607,6 +658,9 @@ footer {
   
   section {
     padding: 1.5rem 1rem;
+    margin: 0 auto 1.5rem;
+    width: calc(100% - 2rem);
+    box-sizing: border-box;
   }
   
   section h2 {
@@ -614,7 +668,8 @@ footer {
   }
   
   .content {
-    padding: 0 1rem;
+    padding: 0;
+    width: 100%;
   }
   
   .intro-stats {
@@ -642,8 +697,18 @@ footer {
     font-size: 1rem;
   }
   
+  .timeline {
+    padding-left: 20px;
+  }
+  
+  .timeline-item {
+    padding: 10px 15px;
+    margin-bottom: 1rem;
+  }
+  
   .contact-details {
     padding: 1.5rem 1rem;
+    width: 100%;
   }
   
   form {
@@ -656,11 +721,19 @@ footer {
   
   .service-item {
     padding: 1.5rem 1rem;
+    width: 100%;
+    box-sizing: border-box;
   }
   
   .solutions-grid {
     grid-template-columns: 1fr;
-    padding: 1rem;
+    padding: 0;
     gap: 1.5rem;
+  }
+  
+  .solution-item {
+    padding: 1.5rem 1rem;
+    width: 100%;
+    box-sizing: border-box;
   }
 }
