@@ -338,7 +338,8 @@ footer {
   top: 15px;
   border-radius: 50%;
   z-index: 1;
-  left: 8px;
+  left: 15px;
+  margin-left: -10px; /* 居中对齐到时间线上 */
 }
 
 .timeline-year {
